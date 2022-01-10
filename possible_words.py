@@ -45,4 +45,4 @@ for l in possible:
   hits = hits + out
 
 words = words[hits > 4]
-words
+print(words)
