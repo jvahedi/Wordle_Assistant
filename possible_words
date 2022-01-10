@@ -1,11 +1,12 @@
 letters_possible = 'abcdefghijklmnopqrstuvwxyz'
-letters_defintely = 'q'
+letters_definitely = 'q'
 letters_position = '??e?y'
 
 
 import numpy as np
 possible = list(letters_possible) 
 position = list(letters_position) 
+definitely = list(letters_definitely) 
 
 import urllib
 url = "https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt"
@@ -31,6 +32,12 @@ for L in position:
   i = i+1
 
 words = words[req]
+
+has = np.ones(len(words)).astype(bool)
+for k in definitely:
+    has = np.logical_and(has,np.char.find(words, k) != -1)
+
+words = words[has]
 
 hits = np.zeros(len(words))
 for l in possible:
