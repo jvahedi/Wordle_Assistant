@@ -1,0 +1,41 @@
+letters_possible = 'abcdefghijklmnopqrstuvwxyz'
+letters_defintely = 'q'
+letters_position = '??e?y'
+
+
+import numpy as np
+possible = list(letters_possible) 
+position = list(letters_position) 
+
+import urllib
+url = "https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt"
+file = urllib.request.urlopen(url)
+
+list_o_words = [((line.decode('utf-8').strip()).split()) for line in file]
+file.close()
+
+list_o_words = np.array(list_o_words)
+
+length = np.char.str_len(list_o_words)
+
+list_o_words = list_o_words[length == 5]
+words = list_o_words
+
+req = np.ones(len(words)).astype(bool)
+i = 0
+for L in position:
+  if L == '?':
+    pass
+  else:
+    req = np.logical_and(req,np.char.find(words, L) == i)
+  i = i+1
+
+words = words[req]
+
+hits = np.zeros(len(words))
+for l in possible:
+  out  = (np.char.find(words, l) != -1).astype(int)
+  hits = hits + out
+
+words = words[hits > 4]
+words
