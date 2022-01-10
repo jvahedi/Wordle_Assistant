@@ -1,4 +1,5 @@
 #Instructions:
+
 In the first line below you can include all remaining possible letters. (NON-GREY)
 
 In the the second line you can specify which letters are definitely in the word. (YELLOW)
