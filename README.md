@@ -2,7 +2,7 @@ Use the Wordle_Assistant.ipynb and click on "Open in Colab" button at the top. F
 
 Also there is a, still in construction, project on creating letter groups for a strategy guide in the secondary jupyter notebook files described below.
 
-In here I try finding inter-character associations. The idea is that people playing the game should be able to know if they got a hit on a specific letter, what other letter or cluster of letters are likely to be implicated in the 5-letter word. I created my original matrix using a multi-hot encoding for the 26 possible letters in each word. So the matrix was  (15,918 x 26) in size. 
+In here I try finding inter-character associations. The idea is that people playing the game should be able to know, if they got a hit on a specific letter, what other letter or cluster of letters are likely to be implicated in the 5-letter word. I created my original matrix using a multi-hot encoding for the 26 possible letters in each word. So the matrix was  (15,918 x 26) in size. 
 
 At first approach I attempt to just build matrices that tell us how letters associate with one another such as a few kinds of cosine similarities and covariances. Yet this did not seem to strongly suggest much. It would not be something someone playing the game could digest in advance very well as it was too many discrete bits of information scattered across many letter to letter associations. I decided to change my approach. I wondered: a player does not play the game only via single letter to letter associations but rather possibly with letter chunks such as 3 letter that appear often together.
 
